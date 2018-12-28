@@ -1,3 +1,2 @@
-<Request 'http://127.0.0.1:5000/search4' [POST]> {'e', 'i'}
-<Request 'http://127.0.0.1:5000/search4' [POST]> {'e', 'i'}
-<Request 'http://127.0.0.1:5000/search4' [POST]> {'e', 'i', 'u', 'a'}
+ImmutableMultiDict([('phrase', 'world, universe, earth'), ('letters', 'aeiou')])|127.0.0.1|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36 OPR/56.0.3051.116|{'u', 'a', 'i', 'o', 'e'}
+ImmutableMultiDict([('phrase', 'computer, technician, study'), ('letters', 'aeiou')])|127.0.0.1|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36 OPR/56.0.3051.116|{'u', 'a', 'i', 'o', 'e'}
