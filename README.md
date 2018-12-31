@@ -12,7 +12,7 @@ In log file, application will show requested data, user IP, user agent and resul
 	
 ## Technologies
 Project is created with:
-* Python (Flask, Jinja2)
+* Python3 (Flask, Jinja2)
 
 ## Supports
 * 
