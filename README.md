@@ -21,4 +21,4 @@ Project is created with:
 To run this project, open 
 
 ## Sources
-This project was created as an exercise from Paul Barry book "Head First. Python".
+This project was created as an exercise from Paul Barry book "Head First. Python"
