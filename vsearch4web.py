@@ -10,12 +10,16 @@ app.config['dbconfig'] = { 'host': '127.0.0.1',
                            'database': 'vsearchlogDB', }
 
 def log_request(req: 'flask_request', res: str) -> None:
-    with UseDatabase(dbconfig) as cursor:
+    with UseDatabase(app.config['dbconfig']) as cursor:
         _SQL = """insert into log
                     (phrase, letters, ip, browser_string, results)
                     values
                     (%s, %s, %s, %s, %s)"""
-        cursor.execute(_SQL)
+        cursor.execute(_SQL, (req.fomr['phrase'],
+                              req.form['letters'],
+                              reg.remote_addr,
+                              req.user_agent.browser,
+                              res, ))
         data = cursor.fetchall()
 
 @app.route('/search4', methods=['POST'])
