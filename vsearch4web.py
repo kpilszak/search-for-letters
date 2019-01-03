@@ -4,11 +4,12 @@ from DBcm import UseDatabase
 
 app = Flask(__name__)
 
+app.config['dbconfig'] = { 'host': '127.0.0.1',
+                           'user': 'vsearch',
+                           'password': 'vsearchpasswd',
+                           'database': 'vsearchlogDB', }
+
 def log_request(req: 'flask_request', res: str) -> None:
-    dbconfig = { 'host': '127.0.0.1',
-                 'user': 'vsearch',
-                 'password': 'vsearchpasswd',
-                 'database': 'vsearchlogDB', }
     with UseDatabase(dbconfig) as cursor:
         _SQL = """insert into log
                     (phrase, letters, ip, browser_string, results)
