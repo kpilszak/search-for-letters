@@ -8,11 +8,12 @@
 ## General info
 This project is a browser application.  
 The main purpose is to type a phrase and letters you want to search for in this phrase.  
-In log file, application will show requested data, user IP, user agent and results.    
+Application will save requested data, user IP, user agent and results in MySQL database and in log file.   
 	
 ## Technologies
 Project is created with:
 * Python3 (Flask, Jinja2)
+* MySQL
 
 ## Supports
 * 
