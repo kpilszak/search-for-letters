@@ -15,6 +15,11 @@ def do_login() -> str:
     session['logged in'] = True
     return 'Now you are logged in.'
 
+@app.route('/logout')
+def do_logout() -> str:
+    session.pop('logged_in')
+    return 'Now you are logged out.'
+
 def log_request(req: 'flask_request', res: str) -> None:
     with UseDatabase(app.config['dbconfig']) as cursor:
         _SQL = """insert into log
