@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, escape, session
+from flask import copy_current_request_context
 from vsearch import search4letters
 from DBcm import UseDatabase, ConnectionError, CredentialsError, SQLError
 from checker import check_logged_in
@@ -24,7 +25,7 @@ def do_logout() -> str:
     return 'Now you are logged out.'
        
 @app.route('/search4', methods=['POST'])
-def do_search() -> 'html':
+def do_search() -> 'html':    
     @copy_current_request_context
     def log_request(req: 'flask_request', res: str) -> None:
         sleep(15)
