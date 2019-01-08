@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, escape
+from flask import Flask, render_template, request, escape, session
 from vsearch import search4letters
 from DBcm import UseDatabase
+from checker import check_logged_in
 
 app = Flask(__name__)
 
@@ -8,6 +9,11 @@ app.config['dbconfig'] = { 'host': '127.0.0.1',
                            'user': 'vsearch',
                            'password': 'vsearchpasswd',
                            'database': 'vsearchlogDB', }
+
+@app.route('/login')
+def do_login() -> str:
+    session['logged in'] = True
+    return 'Now you are logged in.'
 
 def log_request(req: 'flask_request', res: str) -> None:
     with UseDatabase(app.config['dbconfig']) as cursor:
