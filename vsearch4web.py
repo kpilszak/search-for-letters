@@ -51,6 +51,7 @@ def entry_page() -> 'html':
     return render_template('entry.html', the_title='Welcome to the search4letters website!')
 
 @app.route('/viewlog')
+@check_logged_in
 def view_the_log() -> 'html':
     with UseDatabase(app.config['dbconfig']) as cursor:
         _SQL = """select phrase, letters, ip, browser_string, results from log"""
@@ -61,6 +62,8 @@ def view_the_log() -> 'html':
                            the_title='View log',
                            the_row_titles=titles,
                            the_data=contents,)
+
+app.secret_key = 'VeryDifficultKeyToGuess'
 
 if __name__ == '__main__':
     app.run(debug=True)
