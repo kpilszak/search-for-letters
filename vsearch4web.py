@@ -3,6 +3,7 @@ from vsearch import search4letters
 from DBcm import UseDatabase, ConnectionError, CredentialsError, SQLError
 from checker import check_logged_in
 
+from threading import Thread
 from time import sleep
 
 app = Flask(__name__)
@@ -21,8 +22,11 @@ def do_login() -> str:
 def do_logout() -> str:
     session.pop('logged_in')
     return 'Now you are logged out.'
-
-def log_request(req: 'flask_request', res: str) -> None:
+       
+@app.route('/search4', methods=['POST'])
+def do_search() -> 'html':
+    @copy_current_request_context
+    def log_request(req: 'flask_request', res: str) -> None:
     sleep(15)
     with UseDatabase(app.config['dbconfig']) as cursor:
         _SQL = """insert into log
@@ -34,15 +38,13 @@ def log_request(req: 'flask_request', res: str) -> None:
                               req.remote_addr,
                               req.user_agent.browser,
                               res, ))
-       
-@app.route('/search4', methods=['POST'])
-def do_search() -> 'html':
     phrase = request.form['phrase']
     letters = request.form['letters']
     title = 'Here are your results:'
     results = str(search4letters(phrase, letters))
     try:
-        log_request(request, results)
+        t = Thread(target=log_request, args=(request, results))
+        t.start()
     except Exception as err:
         print('***** Login failed; error: ', str(err))
     return render_template('results.html',
