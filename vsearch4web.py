@@ -27,17 +27,17 @@ def do_logout() -> str:
 def do_search() -> 'html':
     @copy_current_request_context
     def log_request(req: 'flask_request', res: str) -> None:
-    sleep(15)
-    with UseDatabase(app.config['dbconfig']) as cursor:
-        _SQL = """insert into log
-                    (phrase, letters, ip, browser_string, results)
-                    values
-                    (%s, %s, %s, %s, %s)"""
-        cursor.execute(_SQL, (req.form['phrase'],
-                              req.form['letters'],
-                              req.remote_addr,
-                              req.user_agent.browser,
-                              res, ))
+        sleep(15)
+        with UseDatabase(app.config['dbconfig']) as cursor:
+            _SQL = """insert into log
+                        (phrase, letters, ip, browser_string, results)
+                        values
+                        (%s, %s, %s, %s, %s)"""
+            cursor.execute(_SQL, (req.form['phrase'],
+                                  req.form['letters'],
+                                  req.remote_addr,
+                                  req.user_agent.browser,
+                                  res, ))
     phrase = request.form['phrase']
     letters = request.form['letters']
     title = 'Here are your results:'
