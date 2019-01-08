@@ -4,6 +4,7 @@
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
+* [Sources](#sources)
 
 ## General info
 This project is a browser application.  
@@ -14,9 +15,6 @@ Application will save requested data, user IP, user agent and results in MySQL d
 Project is created with:
 * Python3 (Flask, Jinja2)
 * MySQL
-
-## Supports
-* 
 
 ## Setup
 To run this project, open 
