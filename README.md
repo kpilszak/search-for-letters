@@ -3,7 +3,6 @@
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
-* [Setup](#setup)
 * [Sources](#sources)
 
 ## General info
@@ -15,9 +14,6 @@ Application will save requested data, user IP, user agent and results in MySQL d
 Project is created with:
 * Python3 (Flask, Jinja2)
 * MySQL
-
-## Setup
-To run this project, open 
 
 ## Sources
 This project was created as an exercise from Paul Barry book "Head First. Python"
